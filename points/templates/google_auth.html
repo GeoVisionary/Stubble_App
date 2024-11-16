@@ -1,0 +1,36 @@
+<!-- points/templates/points/google_auth.html -->
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-2xl font-semibold text-center text-gray-800 mb-6">Google Login</h1>
+
+        {% if user.is_authenticated %}
+            <p class="text-center text-gray-600 mb-4">Welcome, <span class="font-medium">{{ user.email }}</span>!</p>
+            <div class="flex justify-center space-x-4">
+                <a href="{% url 'logout' %}" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors">
+                    Logout
+                </a>
+                <a href="{% url 'index' %}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+                    Go to the App
+                </a>
+            </div>
+        {% else %}
+            <div class="flex justify-center">
+                <a href="{% provider_login_url 'google' process='login' %}" class="flex items-center space-x-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 48 48">
+                        <path fill="#4285F4" d="M23 12h4v7h7v4h-7v7h-4v-7h-7v-4h7z"/>
+                    </svg>
+                    <span>Login with Google</span>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
