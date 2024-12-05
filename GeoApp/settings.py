@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*', 'stubblewarriors.up.railway.app']
 
-CSRF_TRUSTED_ORIGINS = 'https://stubblewarriors.up.railway.app'
+# CSRF_TRUSTED_ORIGINS = 'https://stubblewarriors.up.railway.app'
 # Application definition
 
 INSTALLED_APPS = [
